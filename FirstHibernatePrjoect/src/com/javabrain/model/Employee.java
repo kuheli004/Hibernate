@@ -1,8 +1,12 @@
 package com.javabrain.model;
 
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -25,7 +29,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name= "emp500")  
-@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
+@Inheritance(strategy=InheritanceType.JOINED)
+
+/*@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING,name="type")*/
+/*@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)*/
 public class Employee {  
 @Id
 private int id;  
